@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
 <div class="jumbotron">
@@ -10,42 +9,23 @@
   <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 </div>
 <br/>
+{% if zipcode %}
+	{{ zipcode }}
+{% endif %}
 
 {% if api %}
 	{% if api == "Error..." %}
 		There was an error, please try again...
 	{% else %}
 
-	<div class="jumbotron">
+	<div class="jumbotron {{ cat_color }}">
 	  <h1 class="display-4">{{ api.0.Category.Name }}</h1>
-	  <p class="lead">Current: {{ api.0.ReportingArea }} {{ api.0.StateCode }} Air quality: {{ api.0.AQI }}</p>
+	  <p class="lead">Current: {{ api.0.ReportingArea }} {{ api.0.StateCode }} Air Quality: {{ api.0.AQI }}</p>
 
+	  <p>{{ cat_descr }}</p>
 
-	  <hr class="my-4">
-	  {% if api.0.Category.Name == "Good" %}
-	  		<p>(0 - 50) Air quality is satisfactory, and air pollution poses little or no risk.</p>
-	  {% elif api.0.Category.Name == "Moderate" %}
-	  		<p>(51 - 100)Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.</p>
-	  {% elif api.0.Category.Name == "Unhealthy for Sensitive Groups (USG)" %}
-	  		<p>(101 - 150)Members of sensitive groups may experience health effects. The general public is less likely to be affected.</p>
-	  {% elif api.0.Category.Name == "Unhealthy" %}
-	  		<p>(151 - 200)Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.</p>
-	  {% elif api.0.Category.Name == "Very Unhealthy" %}
-	  		<p>(201 - 300)Health alert: The risk of health effects is increased for everyone.</p>
-	  {% elif api.0.Category.Name == "Hazardous" %}
-	  		<p>(301 - 500)Health warning of emergency conditions: everyone is more likely to be affected.</p>
-
-	  		
-
-
-	  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-	</div>
-
-	{% endif %}
-	
+	  {% endif %}
 
 {% endif %}
-
-
 
 {% endblock %}

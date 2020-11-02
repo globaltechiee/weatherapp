@@ -1,0 +1,20 @@
+
+.good {
+    background-color: #0C0;
+}
+
+.moderate {
+    background-color: rgb(255, 126, 0) ;
+}
+.usg {
+    background-color: rgb(255, 126, 0);
+}
+.unhealthy {
+    background-color: red;
+}
+.very_unhealthy {
+    background-color: rgb(143, 63, 151);
+}
+.hazardous {
+    background-color: rgb(126, 0, 35 ) ;
+}
